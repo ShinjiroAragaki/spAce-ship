@@ -11,7 +11,7 @@ class SquashGame(gamelib.SimpleGame):
     millis = int(round(time.time() * 1000))
     
     def __init__(self):
-        super(SquashGame, self).__init__('Squash', SquashGame.BLACK)
+        super(SquashGame, self).__init__('SpaceShip', SquashGame.BLACK)
          # self.ball = Ball(radius=10,
          #                 color=SquashGame.WHITE,
          #                 pos=(self.window_size[0]/2,
@@ -32,13 +32,13 @@ class SquashGame(gamelib.SimpleGame):
     def update(self):
         # self.ball.move(1./self.fps, self.surface, self.player)
 
-        if self.is_key_pressed(K_UP):
+        if self.is_key_pressed(K_UP) and self.player.y > 20:
             self.player.move_up()
-        if self.is_key_pressed(K_DOWN):
+        if self.is_key_pressed(K_DOWN) and self.player.y < 460:
             self.player.move_down()
-        if self.is_key_pressed(K_RIGHT):
+        if self.is_key_pressed(K_RIGHT) and self.player.x < 620:
             self.player.move_right()
-        if self.is_key_pressed(K_LEFT):
+        if self.is_key_pressed(K_LEFT)and self.player.x >20:
             self.player.move_left()
         for i in range(9):
             if(self.player.hit(self.holes[i])):
